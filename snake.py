@@ -44,7 +44,7 @@ class Snake:
 
     def add_segment(self, position):
         new_segment = Turtle(shape="square")
-        new_segment.color("white")
+        new_segment.color("black")
         new_segment.penup()
         # new_x = self.segments[-1].xcor()
         # new_y = self.segments[-1].ycor()

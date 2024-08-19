@@ -8,7 +8,7 @@ import time
 
 screen = Screen()
 screen.setup(width=600, height=600)
-screen.bgcolor("black")
+screen.bgcolor("white")
 screen.title("Snake Game")
 screen.tracer(0)
 
@@ -24,11 +24,11 @@ screen.onkey(snake.turn_right,"Right")
 screen.onkey(snake.turn_left,"Left")
 
 game_over = False
-speed = 0.2
+speed = 0.2  # Initial speed
 
 while not game_over:
     screen.update()
-    time.sleep(0.2)
+    time.sleep(speed)  # Use the dynamic speed variable
     snake.move_foreword()
 
     # detect collision with food
@@ -36,6 +36,10 @@ while not game_over:
         food.refresh()
         scoreboard.add_score()
         snake.extend()
+
+        # Increase speed (make the game faster)
+        if speed > 0.05:  # Limit the maximum speed to avoid the game becoming too fast
+            speed -= 0.01
 
     # detect collision with wall
     if snake.head.xcor() > 280 or snake.head.ycor() > 280 or snake.head.xcor() < -280 or snake.head.ycor() < -280:
